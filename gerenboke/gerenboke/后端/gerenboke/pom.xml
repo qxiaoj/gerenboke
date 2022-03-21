@@ -45,14 +45,14 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.24</version>
         </dependency>
-
+<!--        引入数据源druid -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
-            <version>1.1.19</version>
+            <version>1.1.8</version>
+            <scope>compile</scope>
         </dependency>
-
-        <!--mp-->
+        <!--mybatis plus-->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
@@ -68,13 +68,6 @@
             <artifactId>mybatis-plus-generator</artifactId>
             <version>3.2.0</version>
         </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-            <version>1.1.8</version>
-            <scope>compile</scope>
-        </dependency>
-
         <!--Shiro-->
         <dependency>
             <groupId>org.apache.shiro</groupId>
@@ -87,6 +80,7 @@
             <artifactId>java-jwt</artifactId>
             <version>3.4.0</version>
         </dependency>
+<!--        redis-->
         <dependency>
             <groupId>org.crazycake</groupId>
             <artifactId>shiro-redis-spring-boot-starter</artifactId>

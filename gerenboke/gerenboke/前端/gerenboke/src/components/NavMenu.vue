@@ -60,4 +60,5 @@ export default {
 .searchInfo {
   left: 400px;
 }
+
 </style>
