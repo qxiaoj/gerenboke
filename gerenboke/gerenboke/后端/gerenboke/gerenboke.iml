@@ -3,7 +3,9 @@
   <component name="FacetManager">
     <facet type="web" name="Web">
       <configuration>
-        <webroots />
+        <webroots>
+          <root url="file://$MODULE_DIR$/src/main/webapp" relative="/" />
+        </webroots>
         <sourceRoots>
           <root url="file://$MODULE_DIR$/src/main/java" />
           <root url="file://$MODULE_DIR$/src/main/resources" />
@@ -87,21 +89,24 @@
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:8.0.24" level="project" />
     <orderEntry type="library" name="Maven: com.alibaba:druid:1.1.8" level="project" />
     <orderEntry type="library" name="Maven: com.baomidou:mybatis-plus-boot-starter:3.2.0" level="project" />
-    <orderEntry type="library" name="Maven: com.baomidou:mybatis-plus:3.2.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-jdbc:2.6.4" level="project" />
     <orderEntry type="library" name="Maven: com.zaxxer:HikariCP:4.0.3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-jdbc:5.3.16" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:5.3.16" level="project" />
+    <orderEntry type="library" name="Maven: com.baomidou:mybatis-plus:2.1.6" level="project" />
+    <orderEntry type="library" name="Maven: com.baomidou:mybatis-plus-support:2.1.6" level="project" />
+    <orderEntry type="library" name="Maven: com.baomidou:mybatis-plus-core:2.1.6" level="project" />
+    <orderEntry type="library" name="Maven: com.github.jsqlparser:jsqlparser:1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.mybatis:mybatis-spring:1.3.1" level="project" />
+    <orderEntry type="library" name="Maven: org.mybatis:mybatis:3.4.5" level="project" />
+    <orderEntry type="library" name="Maven: com.baomidou:mybatis-plus-generate:2.1.6" level="project" />
+    <orderEntry type="library" name="Maven: com.baomidou:mybatisplus-spring-boot-starter:1.0.5" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-configuration-processor:2.6.4" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-freemarker:2.6.4" level="project" />
     <orderEntry type="library" name="Maven: org.freemarker:freemarker:2.3.31" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context-support:5.3.16" level="project" />
     <orderEntry type="library" name="Maven: com.baomidou:mybatis-plus-generator:3.2.0" level="project" />
     <orderEntry type="library" name="Maven: com.baomidou:mybatis-plus-extension:3.2.0" level="project" />
-    <orderEntry type="library" name="Maven: com.baomidou:mybatis-plus-core:3.2.0" level="project" />
-    <orderEntry type="library" name="Maven: com.baomidou:mybatis-plus-annotation:3.2.0" level="project" />
-    <orderEntry type="library" name="Maven: com.github.jsqlparser:jsqlparser:2.1" level="project" />
-    <orderEntry type="library" name="Maven: org.mybatis:mybatis:3.5.2" level="project" />
-    <orderEntry type="library" name="Maven: org.mybatis:mybatis-spring:2.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.shiro:shiro-spring-boot-starter:1.5.3" level="project" />
     <orderEntry type="library" name="Maven: org.apache.shiro:shiro-spring:1.5.3" level="project" />
     <orderEntry type="library" name="Maven: org.apache.shiro:shiro-core:1.5.3" level="project" />
@@ -139,5 +144,9 @@
     <orderEntry type="library" name="Maven: net.sf.saxon:Saxon-HE:9.8.0-4" level="project" />
     <orderEntry type="library" name="Maven: org.apache.shiro:shiro-spring-boot-web-starter:1.4.0-RC2" level="project" />
     <orderEntry type="library" name="Maven: cn.hutool:hutool-all:5.3.3" level="project" />
+    <orderEntry type="library" name="Maven: org.hibernate.validator:hibernate-validator:6.1.5.Final" level="project" />
+    <orderEntry type="library" name="Maven: jakarta.validation:jakarta.validation-api:2.0.2" level="project" />
+    <orderEntry type="library" name="Maven: org.jboss.logging:jboss-logging:3.4.3.Final" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml:classmate:1.5.1" level="project" />
   </component>
 </module>

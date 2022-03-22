@@ -11,6 +11,7 @@
     <groupId>com.qj</groupId>
     <artifactId>gerenboke</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>war</packaging>
     <name>gerenboke</name>
     <description>Demo project for Spring Boot</description>
     <properties>
@@ -52,22 +53,29 @@
             <version>1.1.8</version>
             <scope>compile</scope>
         </dependency>
+
+
         <!--mybatis plus-->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>3.2.0</version>
         </dependency>
+
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-freemarker</artifactId>
         </dependency>
+
         <!--mp代码生成器-->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-generator</artifactId>
             <version>3.2.0</version>
         </dependency>
+
+
         <!--Shiro-->
         <dependency>
             <groupId>org.apache.shiro</groupId>
@@ -91,6 +99,11 @@
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
             <version>5.3.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>6.1.5.Final</version>
         </dependency>
     </dependencies>
 

@@ -49,8 +49,8 @@ public class ShiroConfig {
         filterMap.put("jwt", new JWTFilter());
         factoryBean.setFilters(filterMap);
 
-        factoryBean.setSecurityManager(securityManager);
-        factoryBean.setUnauthorizedUrl("/401");
+//        factoryBean.setSecurityManager(securityManager);
+//        factoryBean.setUnauthorizedUrl("/401");
 
         /*
          * 自定义url规则
@@ -64,7 +64,7 @@ public class ShiroConfig {
         // 所有请求通过我们自己的JWT Filter
         filterRuleMap.put("/**", "jwt");
         factoryBean.setLoginUrl("/user/noLogin");//没有登录的用户请求需要登录的资源时自动跳转到该路径
-        factoryBean.setUnauthorizedUrl("/user/unauthorized");//没有权限默认跳转
+//        factoryBean.setUnauthorizedUrl("/user/unauthorized");//没有权限默认跳转
         factoryBean.setFilterChainDefinitionMap(filterRuleMap);
         return factoryBean;
 

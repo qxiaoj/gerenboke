@@ -1,10 +1,12 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/aa?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://127.0.0.1:3306/gerenboke?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai
     username: root
     password: 1217
     type: com.alibaba.druid.pool.DruidDataSource
 
+# mybatis plus的mapper的xml文件的扫描路径
 mybatis-plus:
-  mapper-locations: classpath*:/mapper/**Mapper.xml
+  mapper-locations: classpath*:com/qj/mapper/*.xml
+  type-aliases-package: com.qj.entity

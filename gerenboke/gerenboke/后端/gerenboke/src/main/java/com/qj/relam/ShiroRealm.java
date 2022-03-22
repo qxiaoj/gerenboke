@@ -2,8 +2,11 @@ package com.qj.relam;
 
 import com.auth0.jwt.exceptions.SignatureVerificationException;
 import com.auth0.jwt.exceptions.TokenExpiredException;
+import com.qj.entity.User;
+import com.qj.service.UserService;
 import com.qj.shiro.JWTToken;
 import com.qj.util.JWTUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -12,12 +15,17 @@ import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
+@Slf4j
 @Component
 public class ShiroRealm extends AuthorizingRealm {
+
+    @Autowired
+    private UserService userService;
 
     @Override
     public boolean supports(AuthenticationToken token) {
@@ -38,8 +46,8 @@ public class ShiroRealm extends AuthorizingRealm {
         if (StringUtils.isEmpty(username)) {
             throw new AuthenticationException("token错误!");
         }
-
-        UserAO user = userService.getUserByName(username);
+        // 返回了一个user对象
+        User user = userService.getByUserName(username);
         if (user == null) {
             throw new AuthenticationException("用户不存在!");
         }
@@ -59,6 +67,8 @@ public class ShiroRealm extends AuthorizingRealm {
         } catch (SignatureVerificationException e) {
             throw new AuthenticationException("密码不正确!");
         }
+
+
 
     }
 
