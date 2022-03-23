@@ -2,6 +2,7 @@ package com.qj.relam;
 
 import com.auth0.jwt.exceptions.SignatureVerificationException;
 import com.auth0.jwt.exceptions.TokenExpiredException;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.qj.entity.User;
 import com.qj.service.UserService;
 import com.qj.shiro.JWTToken;
@@ -47,7 +48,7 @@ public class ShiroRealm extends AuthorizingRealm {
             throw new AuthenticationException("token错误!");
         }
         // 返回了一个user对象
-        User user = userService.getByUserName(username);
+        User user = userService.getOne(new QueryWrapper<User>().eq("username", username));
         if (user == null) {
             throw new AuthenticationException("用户不存在!");
         }
@@ -58,7 +59,7 @@ public class ShiroRealm extends AuthorizingRealm {
 
         try {
             if (JWTUtils.verify(token, username)) {
-                return new SimpleAuthenticationInfo(token, token, getName());
+                return new SimpleAuthenticationInfo(username, user.getPassword(), this.getName());
             } else {
                 throw new AuthenticationException("token认证失败!");
             }

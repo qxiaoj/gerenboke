@@ -1,14 +1,24 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import helloWorld from '@/components/HelloWorld.vue'
+import index from '@/views/Index.vue'
+import login from '@/views/Login.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'helloWorld',
-    component: helloWorld
+    redirect: '/login'
+  },
+  {
+    path: '/index',
+    name: 'index',
+    component: index
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: login
   }
 ]
 

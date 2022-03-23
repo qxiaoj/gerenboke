@@ -3,12 +3,12 @@ package com.qj.entity;
 import java.time.LocalDateTime;
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 
 /**
  * <p>
@@ -43,7 +43,6 @@ public class User implements Serializable {
     /**
      * 通过登录密码加盐生成password存入数据库
      */
-    @NotBlank(message = "盐不能为空")
     private String salt;
 
     /**
@@ -59,23 +58,24 @@ public class User implements Serializable {
     /**
      * 用户邮箱
      */
-    @NotBlank(message = "邮箱不能为空")
-    @Email(message = "邮箱格式不正确")
     private String email;
 
     /**
      * 用户创建时间
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private LocalDateTime createTime;
 
     /**
      * 更新时间（修改密码，用户昵称等操作）
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private LocalDateTime updateTime;
 
     /**
      * 上次登录时间，在第一次注册登录时候生效
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private LocalDateTime lastLoginTime;
 
     /**

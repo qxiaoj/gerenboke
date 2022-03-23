@@ -19,16 +19,16 @@ import java.util.Map;
 @Component
 public class JWTUtils {
     //指定一个token过期时间（毫秒）
-    private static String EXPIRE_TIME;  //7天
+    private static final long EXPIRE_TIME = 7 * 24 * 60 * 60 * 1000;  //7天
     // jwt加解密的私钥使用配置的字符串而不使用用户登录密码的好处是防止用户密码被其他人修改后，用户操作系统此时再去校验token会发生token解析对不上的情况。
-    private static String SECRET;
+    private static final String SECRET = "$989Hdjy)_fa@";
 
     /**
      * 生成token  私钥，通过前端登录时候传入的
-     * @param map
+     * @param username
      * @return
      */
-    public static String getJWTToken(Map<String, String> map) {
+    public static String getJWTToken(String username) {
         // 从当前创建时间开始，7天过期时间
         Date date = new Date(System.currentTimeMillis() + EXPIRE_TIME);
 
@@ -37,9 +37,14 @@ public class JWTUtils {
         // 先设置头部信息 跳过
         // builder.withHeader();
         // 设置payload
-        map.forEach((key, value) -> builder.withClaim(key, value));
+        /*for (Map.Entry<String, String> entry : map.entrySet()) {
+            String key = entry.getKey();
+            String value = entry.getValue();
+            builder.withClaim(key, value);
+        }*/
         // 设置令牌过期时间
         String token = builder.withExpiresAt(date)
+                .withClaim("username",username)
                 .sign(Algorithm.HMAC256(SECRET)); // 设置私钥  该私钥由 后期登录的时候，MD5以及hash散列和salt构成
         return token;
 

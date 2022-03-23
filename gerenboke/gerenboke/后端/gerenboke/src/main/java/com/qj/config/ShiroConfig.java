@@ -8,6 +8,8 @@ import org.apache.shiro.mgt.DefaultSubjectDAO;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
+import org.apache.shiro.spring.web.config.DefaultShiroFilterChainDefinition;
+import org.apache.shiro.spring.web.config.ShiroFilterChainDefinition;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
 import org.springframework.context.annotation.Bean;
@@ -16,6 +18,7 @@ import org.springframework.context.annotation.DependsOn;
 
 import javax.servlet.Filter;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 @Configuration
@@ -40,32 +43,40 @@ public class ShiroConfig {
     }
 
 
-    @Bean("shiroFilter")
-    public ShiroFilterFactoryBean shiroFilter(DefaultWebSecurityManager securityManager) {
+    @Bean
+    public ShiroFilterChainDefinition shiroFilterChainDefinition() {
+        DefaultShiroFilterChainDefinition chainDefinition = new DefaultShiroFilterChainDefinition();
+
+        Map<String, String> filterMap = new LinkedHashMap<>();
+        /*
+         * 自定义url规则
+         * http://shiro.apache.org/web.html#urls-
+         */
+        filterMap.put("/user/Login", "anon");
+        filterMap.put("/user/logout", "anon");
+        filterMap.put("/user/noLogin", "anon");
+        filterMap.put("/**", "authc");
+        // 所有请求通过我们自己的JWT Filter
+        filterMap.put("/**", "jwt");
+        // factoryBean.setUnauthorizedUrl("/401");
+        // factoryBean.setUnauthorizedUrl("/user/unauthorized");//没有权限默认跳转
+        chainDefinition.addPathDefinitions(filterMap);
+        return chainDefinition;
+    }
+
+    @Bean("shiroFilterFactoryBean")
+    public ShiroFilterFactoryBean shiroFilter(DefaultWebSecurityManager securityManager,ShiroFilterChainDefinition shiroFilterChainDefinition) {
+
         ShiroFilterFactoryBean factoryBean = new ShiroFilterFactoryBean();
+        factoryBean.setSecurityManager(securityManager);
 
         // 添加自己的过滤器并且取名为jwt
         Map<String, Filter> filterMap = new HashMap<>();
         filterMap.put("jwt", new JWTFilter());
         factoryBean.setFilters(filterMap);
 
-//        factoryBean.setSecurityManager(securityManager);
-//        factoryBean.setUnauthorizedUrl("/401");
-
-        /*
-         * 自定义url规则
-         * http://shiro.apache.org/web.html#urls-
-         */
-        Map<String, String> filterRuleMap = new HashMap<>();
-        filterRuleMap.put("/user/doLogin", "anon");
-        filterRuleMap.put("/user/logout", "anon");
-        filterRuleMap.put("/user/noLogin", "anon");
-        filterRuleMap.put("/**", "authc");
-        // 所有请求通过我们自己的JWT Filter
-        filterRuleMap.put("/**", "jwt");
-        factoryBean.setLoginUrl("/user/noLogin");//没有登录的用户请求需要登录的资源时自动跳转到该路径
-//        factoryBean.setUnauthorizedUrl("/user/unauthorized");//没有权限默认跳转
-        factoryBean.setFilterChainDefinitionMap(filterRuleMap);
+        Map<String, String> filterMap22 = shiroFilterChainDefinition.getFilterChainMap();
+        factoryBean.setFilterChainDefinitionMap(filterMap22);
         return factoryBean;
 
     }

@@ -23,6 +23,7 @@
       <el-menu-item index="3">标签</el-menu-item>
       <el-menu-item index="4">归档</el-menu-item>
       <el-menu-item index="5">照片</el-menu-item>
+      <el-menu-item index="6">关于我</el-menu-item>
 
       <el-menu-item class="searchInfo">
         <el-input placeholder="请输入内容" v-model="search">

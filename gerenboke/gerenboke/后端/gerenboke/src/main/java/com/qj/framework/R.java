@@ -8,6 +8,7 @@ public class R extends HashMap<String, Object> implements Serializable {
     public R() {
         put("code", 200);
         put("message", "操作成功");
+        put("success",true);
     }
 
     /**
@@ -26,6 +27,7 @@ public class R extends HashMap<String, Object> implements Serializable {
         R r = new R();
         r.put("code", 400);
         r.put("message", "操作失败");
+        r.put("success",false);
         return r;
     }
 
