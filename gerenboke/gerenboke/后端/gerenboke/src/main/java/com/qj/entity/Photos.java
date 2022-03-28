@@ -2,6 +2,8 @@ package com.qj.entity;
 
 import java.time.LocalDateTime;
 import java.io.Serializable;
+
+import com.qj.framework.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -18,7 +20,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class Photos implements Serializable {
+public class Photos extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

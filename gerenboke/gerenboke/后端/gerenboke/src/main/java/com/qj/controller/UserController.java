@@ -86,4 +86,20 @@ public class UserController {
         return userService.getByUserName(username);
     }
 
+
+    /**
+     * 登陆以后，对齐资料完成度，进行判断，并完善资料，前端还要添加一个修改头像的功能
+     * @param user
+     * @return
+     */
+    @RequestMapping(value = "/findUserName", method = { RequestMethod.POST})
+    public R modifyData(@RequestBody  User user) {
+
+        return R.ok();
+    }
+
+
+
+
 }
+

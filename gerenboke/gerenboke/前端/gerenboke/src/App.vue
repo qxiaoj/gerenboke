@@ -7,12 +7,14 @@
 <script>
 import NavMenu from '@/components/NavMenu.vue'
 import Footer from '@/components/Footer.vue'
+import IndexBody from "@/views/index/IndexBody.vue";
 
 export default {
   name: 'app',
   components: {
     NavMenu,
-    Footer
+    Footer,
+    IndexBody,
   }
 }
 </script>

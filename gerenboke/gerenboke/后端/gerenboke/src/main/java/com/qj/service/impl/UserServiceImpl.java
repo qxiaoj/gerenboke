@@ -108,6 +108,30 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         // 对加入的数据进行增加操作
         int insert = userMapper.insert(user);
 
-        return R.ok().put("message",insert > 0 ? "注册成功!请登录" : "注册失败，请重新操作");
+        if (insert < 0) {
+            return R.err().put("message","操作失败，请重新操作");
+        }
+        return R.ok().put("message","操作成功");
+    }
+
+    /**
+     * 修改完善用户资料
+     *
+     * @param user
+     * @return
+     */
+    @Override
+    public R modifyData(User user) {
+        // 昵称
+        // 邮箱
+        // 更新时间
+        user.setUpdateTime(LocalDateTime.now());
+        // content 自我介绍
+        // 更改头像  我只是存在一个到本地去，留下一个地址（使用Nginx反向代理）
+        int i = userMapper.updateById(user);
+        if (i < 0) {
+            return R.err().put("message","操作失败，请重新操作");
+        }
+        return R.ok().put("message","操作成功");
     }
 }

@@ -25,7 +25,7 @@
       <el-menu-item index="5">照片</el-menu-item>
       <el-menu-item index="6">关于我</el-menu-item>
 
-      <el-menu-item class="searchInfo">
+      <el-menu-item class="searchInfo" style="">
         <el-input placeholder="请输入内容" v-model="search">
           <el-button slot="append" icon="el-icon-search"></el-button>
         </el-input>

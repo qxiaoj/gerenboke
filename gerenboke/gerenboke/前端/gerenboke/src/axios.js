@@ -5,8 +5,7 @@ import router from "./router";
 import Vue from 'vue'
 
 
-// 设置全局的baseURL
-axios.defaults.baseURL = 'http://localhost:8080'
+
 
 axios.interceptors.request.use(config => {
     console.log("前置拦截")

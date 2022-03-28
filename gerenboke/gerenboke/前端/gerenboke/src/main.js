@@ -7,9 +7,9 @@ import './plugins/element.js'
 import './axios.js'
 
 Vue.config.productionTip = false
-
-
-
+Vue.prototype.$ajax = axios 
+// 设置全局的baseURL
+axios.defaults.baseURL = 'http://localhost:8080'
 new Vue({
   router,
   store,

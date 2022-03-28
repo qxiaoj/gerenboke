@@ -39,4 +39,11 @@ public interface UserService extends IService<User> {
      */
     R register(User user);
 
+    /**
+     * 更新用户资料
+     * @param user
+     * @return
+     */
+    R modifyData(User user);
+
 }
