@@ -85,7 +85,7 @@ public class FileUploadUtil {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            return R.ok().put("message","上传图片成功").put("file", dest.getAbsolutePath());
+            return R.ok().put("message","上传图片成功").put("fileName", fileName);
         }
     }
 }
